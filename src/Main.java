@@ -81,6 +81,56 @@ public class Main {
                     break;
                 }
                 break;
+            case 2:
+                int randomNumber1;
+                do {
+                    randomNumber1 = random.nextInt(9000) + 1000;
+                } while (!doesNumberSuits(String.valueOf(randomNumber1)));
+
+                int randomNumber2;
+                do {
+                    randomNumber2 = random.nextInt(9000) + 1000;
+                } while (!doesNumberSuits(String.valueOf(randomNumber2)));
+                int player=1;
+                while (true) {
+                    player++;
+                    if (player % 2 == 0) {
+                        System.out.println("Player 1");
+                        String guessNumber1;
+                        do {
+                            System.out.print("Enter your guess: ");
+                            guessNumber1 = sc.next();
+                            if (!doesNumberSuits(guessNumber1)) {
+                                System.out.println("Please enter a four-digit number with different digits.");
+                            }
+                        } while (!doesNumberSuits(guessNumber1));
+
+                        boolean resultGame = playGame(guessNumber1, randomNumber1);
+                        if (resultGame) {
+                            System.out.println("You guessed the number, player 1 wins!");
+                            break;
+                        }
+                    } else {
+                        System.out.println("Player 2");
+                        String guessNumber2;
+                        do {
+                            System.out.print("Enter your guess: ");
+                            guessNumber2 = sc.next();
+                            if (!doesNumberSuits(guessNumber2)) {
+                                System.out.println("Please enter a four-digit number with different digits.");
+                            }
+                        } while (!doesNumberSuits(guessNumber2));
+
+                        boolean resultGame = playGame(guessNumber2, randomNumber2);
+                        if (resultGame) {
+                            System.out.println("You guessed the number, player 2 wins!");
+                            break;
+                        }
+                    }
+                }
+                break;
+            default:
+                System.out.print("This mode do not exist!");
         }
     }
 }
