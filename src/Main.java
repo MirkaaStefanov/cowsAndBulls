@@ -35,8 +35,9 @@ public class Main {
                 countBull++;
             }
         }
+        countCow=countCow-countBull;
         System.out.println("Cows: " + countCow + ", Bulls: " + countBull);
-        if (countCow == 4 && countBull == 4) {
+        if (countCow == 0 && countBull == 4) {
             return true;
         }
         return false;
